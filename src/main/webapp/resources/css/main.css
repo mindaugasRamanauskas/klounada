@@ -1,0 +1,73 @@
+@import url(https://fonts.googleapis.com/css?family=Cinzel+Decorative:400,900);
+
+h1 {
+	color: #252010;
+	font-family: 'Expletus Sans';
+	font-size: 48px;
+	font-weight: 400;
+	line-height: 60px;
+	margin-bottom: 48px;
+	letter-spacing: -1px;
+	text-transform: none;
+}
+
+p {
+	color: #40371D;
+	font-size: 22px;
+	font-weight: 400;
+	line-height: 36px;
+	margin-bottom: 36px;
+}
+
+a {
+	color: #5cd8b6;	
+}
+
+a:hover {}
+
+main {
+    text-align: center;
+}
+
+body {
+  font-family: 'Expletus Sans';
+  text-align: center;
+  color: black;
+}
+
+article {
+  max-width: 600px;
+  overflow: hidden;
+  margin: 0 auto 50px;
+}
+
+.subtitle {
+  margin: 0 0 2em 0;
+}
+.fancy {
+  line-height: 0.5;
+  text-align: center;
+}
+.fancy span {
+  display: inline-block;
+  position: relative;  
+}
+.fancy span:before,
+.fancy span:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  top: 0;
+  width: 600px;
+}
+.fancy span:before {
+  right: 100%;
+  margin-right: 15px;
+}
+.fancy span:after {
+  left: 100%;
+  margin-left: 15px;
+}
+	
