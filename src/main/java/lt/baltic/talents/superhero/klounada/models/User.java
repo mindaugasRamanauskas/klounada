@@ -1,29 +1,61 @@
 package lt.baltic.talents.superhero.klounada.models;
 
+import java.util.Arrays;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TBL_USERS")
 public class User {
+
+	@Id
+	@GeneratedValue
+	@Column(name = "USER_ID")
+	private Long id;
+
+	@Column(name = "USER_LOGIN", unique = true)
+	private String login;
 	
-	private String name;
-	private String surname;
+	@Column(name = "USER_PWD")
+	private char[] pwd;
 	
-	public User(String name, String surname) {
-		this.name = name;
-		this.surname = surname;
+	public User() {}
+
+	public User(String login, char[] pwd) {
+		this.login = login;
+		this.pwd = pwd.clone();
 	}
 
-	public String getName() {
-		return name;
+	public Long getId() {
+		return id;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public String getSurname() {
-		return surname;
+	public String getLogin() {
+		return login;
 	}
 
-	public void setSurname(String surname) {
-		this.surname = surname;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
+	public char[] getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(char[] pwd) {
+		this.pwd = pwd;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", login=" + login + ", pwd=" + Arrays.toString(pwd) + "]";
+	}
 }

@@ -16,11 +16,8 @@
 			
 			<p class="subtitle fancy">
 		    	<span>
-		    		<c:if test="${not empty user.name}">
-		    			${user.name}
-		    		</c:if>
-		    		<c:if test="${not empty user.surname}">
-		    			${user.surname}
+		    		<c:if test="${not empty user.login}">
+		    			${user.login}
 		    		</c:if>
 		    	</span>
 		    </p>

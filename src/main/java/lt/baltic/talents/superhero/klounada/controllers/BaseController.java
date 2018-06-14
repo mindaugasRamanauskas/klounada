@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import lt.baltic.talents.superhero.klounada.helpers.MessageHelper;
-import lt.baltic.talents.superhero.klounada.models.User;
 
 @Controller
 public class BaseController {
@@ -30,10 +29,6 @@ public class BaseController {
 		
 		String javaVersion = System.getProperty("java.version");
 		model.addAttribute("javaVersion", javaVersion);
-		
-		User user = new User("Mindaugas", null);
-		
-		model.addAttribute("user", user);
 		
 		System.out.println(helper.getMessage("message.hello"));
 		
