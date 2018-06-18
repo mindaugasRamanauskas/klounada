@@ -1,5 +1,6 @@
 package lt.baltic.talents.superhero.klounada.daos;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
@@ -15,6 +16,17 @@ public class UserDaoImpl implements UserDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	@Override
+	public boolean create(User user) {
+		Long id = (Long) sessionFactory.getCurrentSession().save(user);
+		
+		if (id != null) {
+			return true;
+		}
+		
+		return false;
+	}
 
 	@Override
 	public boolean login(User user) {

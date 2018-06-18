@@ -18,6 +18,13 @@ public class LoginController {
 	@Autowired
     private UserService userService;
 	
+	@RequestMapping(value = "testCreate", method = RequestMethod.GET)
+	public String login(Model model) {
+		userService.create(new User("OOOOO", "xzxzcxzcxzc".toCharArray()));
+		
+		return "login/failure";
+	}
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String login(Model model, 
 			@RequestParam(value = "user", required = false) String userParam,
