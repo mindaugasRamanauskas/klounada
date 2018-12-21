@@ -26,7 +26,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String login(Model model, 
+	public String login(Model model,
 			@RequestParam(value = "user", required = false) String userParam,
 			@RequestParam(value = "pwd", required = false) String pwd, RedirectAttributes redirectAttributes) {
 		
