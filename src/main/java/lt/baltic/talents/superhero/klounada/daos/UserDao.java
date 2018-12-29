@@ -6,6 +6,6 @@ public interface UserDao {
 	
 	boolean login(User user);
 	
-	boolean create(User user);
+	boolean create(User user) throws Errors;
 
 }

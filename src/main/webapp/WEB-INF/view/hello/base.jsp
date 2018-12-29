@@ -9,18 +9,20 @@
 	
     <title><spring:message code="message.title" /></title>
 </head>
+
 <body>
 	<c:if test="${not empty user}">
 		<article>
 			<h1><spring:message code="message.welcome" /></h1>
-			
+
 			<p class="subtitle fancy">
 		    	<span>
-		    		<c:if test="${not empty user.login}">
-		    			${user.login}
+		    		<c:if test="${not empty user.name}">
+		    			${user.name}
 		    		</c:if>
 		    	</span>
 		    </p>
+			<span><a href="<spring:url value="/logout"/>" style="font-size: 2em;"><spring:message code="message.logout" /></a></span>
 		</article>
 	</c:if>
 	

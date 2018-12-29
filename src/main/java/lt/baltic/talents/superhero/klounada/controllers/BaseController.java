@@ -1,51 +1,36 @@
 package lt.baltic.talents.superhero.klounada.controllers;
 
-import java.sql.Date;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-
+import lt.baltic.talents.superhero.klounada.helpers.DateHelper;
+import lt.baltic.talents.superhero.klounada.helpers.SystemHelper;
+import lt.baltic.talents.superhero.klounada.models.LocalUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import lt.baltic.talents.superhero.klounada.helpers.MessageHelper;
-import lt.baltic.talents.superhero.klounada.models.User;
+import java.time.LocalDateTime;
 
+@Scope("session")
 @Controller
 public class BaseController {
-	
+
 	@Autowired
-	private MessageHelper helper;
-	
-	private User user;
+	private LocalUser localUser;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String start(@RequestParam(value = "name", required = false) String name, Model model,
-			RedirectAttributes redirectAttributes) {
-		LocalDateTime date = LocalDateTime.now();
-		model.addAttribute("now", Date.from(date.atZone(ZoneId.systemDefault()).toInstant()));
-
-		String operatingSystem = System.getProperty("os.name");
-		model.addAttribute("operatingSystem", operatingSystem);
-		
-		String javaVersion = System.getProperty("java.version");
-		model.addAttribute("javaVersion", javaVersion);
-		
-		User user = (User) model.asMap().get("user");
-		System.out.println("***** " + (user == null ? "" : user.getLogin()));
-		
-		if (user != null) {
-			this.user = user;
+	public String start(@RequestParam(value = "name", required = false) String name, Model model) {
+		if (! localUser.isLogged()) {
+			return "redirect:/login";
 		}
-		
-		model.addAttribute("user", this.user);
-		
-		System.out.println(helper.getMessage("message.hello"));
-		
+
+		model.addAttribute("now", DateHelper.convertToDate(LocalDateTime.now()));
+		model.addAttribute("operatingSystem", SystemHelper.getSystemInformation("os.name"));
+		model.addAttribute("javaVersion", SystemHelper.getSystemInformation("java.version"));
+		model.addAttribute("user", localUser);
+
 		return "hello/base";
 	}
 
