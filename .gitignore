@@ -1,7 +1,8 @@
 target
 .project
 .classpath
-.settings
+.settipts
+.abc
 db
 .idea
 *.iml
